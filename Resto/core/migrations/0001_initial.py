@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name='Carta',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('precio_actual', models.IntegerField(default=0, editable=False)),
+                ('precio_actual', models.IntegerField(default=0, null=True, editable=False)),
             ],
         ),
         migrations.CreateModel(
