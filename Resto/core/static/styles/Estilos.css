@@ -1,4 +1,7 @@
 
+.holaClass{
+	color:red;
+}
 #tituloPrincipal{
 	color:purple;
 }
@@ -9,6 +12,8 @@
 
 .botonDeBotonera{
 	margin-right:100px;
+	background-color:red;
+	color:red;
 }
 
 
