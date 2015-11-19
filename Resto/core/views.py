@@ -11,5 +11,13 @@ class Home(View):
         return render(request, 'home.html', {"cuenta" : "5"})
 
 
+class CartaView(View):
 
+    def get(self, request):
+        return render(request, 'carta.html')
+
+class DescansoView(View):
+
+    def get(self, request):
+        return render(request, 'descanso.html')
 

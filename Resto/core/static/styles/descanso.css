@@ -1,0 +1,18 @@
+#slider {
+        position: absolute;
+        width: 850px;
+        height: 600px;
+        left: 400px;
+        top: 150px;
+}
+
+#full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
