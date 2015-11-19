@@ -4,16 +4,6 @@
     margin: 100px 35%;
 }
 
-#slider {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        left: 100px;
-        top: 50px;
-}
-
-
-
 #full-screen-background-image {
   z-index: -999;
   min-height: 100%;

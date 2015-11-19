@@ -12,6 +12,20 @@ class Home(View):
 
 class CartaView(View):
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    def get(self, request):
+        return render(request, 'carta.html')
+
+class DescansoView(View):
+
+    def get(self, request):
+        return render(request, 'descanso.html')
+=======
+    def get_ip(self):
+        return str([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1])
+>>>>>>> ac0455819dabdf18b51a0f1abbb5bfbb4d4b0741
 
     def post(self, request, *args, **kwargs):
 
@@ -61,4 +75,5 @@ class CartaView(View):
             "anterior" : anterior
             }
         )
+>>>>>>> 653547a8bb55fbe5db8110da299776d9dc3c5d13
 
