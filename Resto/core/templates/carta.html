@@ -15,14 +15,13 @@
         <!-- Latest compiled JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
 <table border="2px" width="5px">
   <tr>
     <td>
-        <h1> Pagina x </h1>
+        <h1> {{seccion}} </h1>
     </td>
     <td>
         <div class="nav nav-pills nav-stacked" role="group" >
@@ -37,12 +36,64 @@
   </tr>
 
 <tr>
+  <td colspan="2">
+<div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for bebida in bebidas %}
+          <tr>
+            <td>{{bebida.nombre}}</td>
+            <td>{{bebida.precio}}</td>
+          </tr>
+        {% endfor %}
+        {% for plato in platos %}
+          <tr>
+            <td>{{plato.nombre}}</td>
+            <td>{{plato.precio}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+</div>
 
 </tr>
 
 <tr>
-
 </tr>
 
 </table>
 </body>
+
+<!-- Logica Botones -->
+
+{% if seccion.id_seccion == 1 %}
+
+    <form method="post" action="/carta/{{siguiente}}">
+        {% csrf_token %}
+        <button type="submit"> Proxima pagina</button>
+    </form>
+{% elif seccion.id_seccion == 7 %}
+    <form method="post" action="/carta/{{anterior}}">
+        {% csrf_token %}
+        <button type="submit"> Anterior pagina</button>
+    </form>
+{% else %}
+    <form method="post" action="/carta/{{anterior}}">
+        {% csrf_token %}
+        <button type="submit"> Anterior pagina</button>
+    </form>
+    <form method="post" action="/carta/{{siguiente}}">
+        {% csrf_token %}
+        <button type="submit"> Proxima pagina</button>
+    </form>
+
+{% endif %}
+

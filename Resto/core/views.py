@@ -9,23 +9,12 @@ class Home(View):
 
         return render(request, 'home.html', {"cuenta" : "5"})
 
-
-class CartaView(View):
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    def get(self, request):
-        return render(request, 'carta.html')
-
 class DescansoView(View):
 
     def get(self, request):
         return render(request, 'descanso.html')
-=======
-    def get_ip(self):
-        return str([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1])
->>>>>>> ac0455819dabdf18b51a0f1abbb5bfbb4d4b0741
+
+class CartaView(View):
 
     def post(self, request, *args, **kwargs):
 
@@ -42,7 +31,7 @@ class DescansoView(View):
             siguiente = seccion_actual.id_seccion + 1
 
 
-        return render(request, 'carta_prueba.html',
+        return render(request, 'carta.html',
             {
             "seccion" : seccion_actual,
             "platos": platos,
@@ -66,7 +55,7 @@ class DescansoView(View):
             anterior = seccion_actual.id_seccion - 1
             siguiente = seccion_actual.id_seccion + 1
 
-        return render(request, 'carta_prueba.html',
+        return render(request, 'carta.html',
             {
             "seccion" : seccion_actual,
             "platos": platos,
@@ -75,5 +64,5 @@ class DescansoView(View):
             "anterior" : anterior
             }
         )
->>>>>>> 653547a8bb55fbe5db8110da299776d9dc3c5d13
+
 
