@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from core.models import *
+from core.forms import *
 #Create your views here.
 
 class Home(View):
@@ -15,6 +16,17 @@ class DescansoView(View):
         return render(request, 'descanso.html')
 
 class CartaView(View):
+
+#probar el form
+    #def add(request):
+        #if request.method == 'POST':
+            #form = PedidoForm(request.POST)
+            #if form.is_valid():
+                #form.save()
+    #return render(request, 'page.html', {
+    #'form': AllocationPlanForm()
+        #}
+        #)
 
     def post(self, request, *args, **kwargs):
 
