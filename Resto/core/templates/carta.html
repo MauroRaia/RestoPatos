@@ -49,21 +49,30 @@
         <tbody>
         {% for bebida in bebidas %}
           <tr>
-            <td>{{bebida.nombre}}</td>
-            <td>{{bebida.precio}}</td>
+            <td draggable="true">{{bebida.nombre}}</td>
+            <td draggable="true">{{bebida.precio}}</td>
           </tr>
         {% endfor %}
         {% for plato in platos %}
           <tr>
-            <td>{{plato.nombre}}</td>
-            <td>{{plato.precio}}</td>
+            <td draggable="true">{{plato.nombre}}</td>
+            <td draggable="true">{{plato.precio}}</td>
           </tr>
         {% endfor %}
         </tbody>
       </table>
       </div>
 </div>
-
+  <td>
+    <table border=2px>
+      <tr>
+        <td>
+         <body>
+          <div><u> Platos elegidos </u></div>
+         </body>
+      </tr>
+    </table>
+  </td>
 </tr>
 
 <tr>
