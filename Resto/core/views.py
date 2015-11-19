@@ -12,26 +12,53 @@ class Home(View):
 
 class CartaView(View):
 
-    def get_ip(self):
-        return str([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1])
+
+    def post(self, request, *args, **kwargs):
+
+        seccion_actual = Seccion.objects.get(id_seccion=kwargs["seccion_show"])
+
+        platos = Plato.objects.filter(seccion_platos=seccion_actual)
+        bebidas = Sin_Alcohol.objects.filter(seccion_bebida=seccion_actual)
+
+        if seccion_actual.id_seccion == 2:
+            anterior = seccion_actual.id_seccion - 1
+            siguiente = seccion_actual.id_seccion + 1
+        else:
+            anterior = seccion_actual.id_seccion - 1
+            siguiente = seccion_actual.id_seccion + 1
 
 
-    def get_mesa(self):
-        my_ip = self.get_ip()
-        lista_mesas = Mesa.objects.all()
-        for m in lista_mesas:
-            if m["ip"] == my_ip:
-                return m
-
-    def get(self, request):
-        #pedido = Pedido.objects.create(
-            #mesa=self.get_mesa()
-            #)
-        #pedido_seccion = Pedido.seccion_actual
         return render(request, 'carta_prueba.html',
-        #{
-        #"pedido_seccion" : pedido_seccion,
-        #"pedido" : pedido
-        #}
+            {
+            "seccion" : seccion_actual,
+            "platos": platos,
+            "bebibas" : bebidas,
+            "siguiente" : siguiente,
+            "anterior" : anterior
+            }
+        )
+
+    def get(self, request, *args, **kwargs):
+
+        seccion_actual = Seccion.objects.get(id_seccion=kwargs["seccion_show"])
+
+        platos = Plato.objects.filter(seccion_platos=seccion_actual)
+        bebidas = Sin_Alcohol.objects.filter(seccion_bebida=seccion_actual)
+
+        if seccion_actual.id_seccion == 2:
+            anterior = seccion_actual.id_seccion - 1
+            siguiente = seccion_actual.id_seccion + 1
+        else:
+            anterior = seccion_actual.id_seccion - 1
+            siguiente = seccion_actual.id_seccion + 1
+
+        return render(request, 'carta_prueba.html',
+            {
+            "seccion" : seccion_actual,
+            "platos": platos,
+            "bebidas" : bebidas,
+            "siguiente" : siguiente,
+            "anterior" : anterior
+            }
         )
 

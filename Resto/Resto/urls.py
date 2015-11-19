@@ -9,5 +9,5 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home', Home.as_view()),
-    url(r'^carta', CartaView.as_view())
+    url(r'^carta/(?P<seccion_show>\w+)', CartaView.as_view())
 ]

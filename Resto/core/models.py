@@ -1,12 +1,14 @@
 from django.db import models
-import socket
+
+class Tablet(models.Model):
+    id_interno = models.IntegerField()
+    id_mesa = models.ForeignKey("Mesa", blank=True)
+
+    def __unicode__(self):
+        return str(self.id_interno) + " / " + str(self.id_mesa)
 
 class Mesa(models.Model):
     numero = models.IntegerField()
-    ip = models.CharField(max_length=50, null=True,
-        default=(
-            str([ip for ip in socket.gethostbyname_ex(socket.gethostname())[2] if not ip.startswith("127.")][:1]))
-            )
 
     def __unicode__(self):
         return "Numero de mesa: " + str(self.numero)
@@ -27,7 +29,7 @@ class Pedido(models.Model):
         (Pagado, "Pagado")
         )
     mesa = models.ForeignKey("Mesa")
-    platos = models.ForeignKey("Plato", blank=True)
+    platos = models.ForeignKey("Plato", blank=True, null=True)
     fecha = models.DateField(auto_now_add=True)
     estados = models.CharField(max_length=1, choices=estados_platos, default="Pedido")
     precio_actual = models.IntegerField(default=0, editable=False, null=True)
@@ -55,7 +57,7 @@ class Plato(models.Model):
         return self.nombre + " / $" + str(self.precio) + " / Seccion: " + str(self.seccion_platos)
 
 
-class Bebida(models.Model):
+class Sin_Alcohol(models.Model):
     precio = models.DecimalField(default=0.0, decimal_places=2, max_digits=5)
     nombre = models.CharField(max_length=100)
     seccion_bebida = models.ForeignKey("Seccion", null=True)
@@ -70,6 +72,7 @@ class Bebida(models.Model):
 class Seccion(models.Model):
     nombre = models.CharField(max_length=100)
     carta_seccion = models.ForeignKey("Carta", null=True)
+    id_seccion = models.IntegerField(null=True)
 
     def __unicode__(self):
         return self.nombre

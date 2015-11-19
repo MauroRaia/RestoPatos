@@ -1,3 +1,55 @@
-Bienvenido a la carta !!!
+{{seccion}}
+{{bebidas}}
 
-{{mesa.ip}}
+<div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for bebida in bebidas %}
+          <tr>
+            <td>{{bebida.nombre}}</td>
+            <td>{{bebida.precio}}</td>
+          </tr>
+        {% endfor %}
+        {% for plato in platos %}
+          <tr>
+            <td>{{plato.nombre}}</td>
+            <td>{{plato.precio}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+</div>
+
+
+{% if seccion.id_seccion == 1 %}
+
+    <form method="post" action="/carta/{{siguiente}}">
+        {% csrf_token %}
+        <input type="text" name="infoAdicional">
+        <button type="submit"> Proxima pagina</button>
+    </form>
+{% elif seccion.id_seccion == 7 %}
+    <form method="post" action="/carta/{{anterior}}">
+        {% csrf_token %}
+        <button type="submit"> Anterior pagina</button>
+    </form>
+{% else %}
+    <form method="post" action="/carta/{{anterior}}">
+        {% csrf_token %}
+        <button type="submit"> Anterior pagina</button>
+    </form>
+    <form method="post" action="/carta/{{siguiente}}">
+        {% csrf_token %}
+        <button type="submit"> Proxima pagina</button>
+    </form>
+
+{% endif %}
+
